@@ -7,6 +7,7 @@ A minimal working example of a video analytics framework with object detection (
 
 
 ## Features:
+- Self-contained: all you need is contained in this repo, e.g., the model checkpoint, the dataset, the example log file and results plot, etc
 - Two roles: `edge` to send frames, and `cloud` to infer
 - Communication: implemented with Socket, lightweight and efficient
 - Performance monitor: an easy implementation to log and show performance
@@ -49,3 +50,5 @@ others are common packages
 ## Tips
 - Modify code to fit your own scenario, e.g., task, role of edge and cloud, encoding/decoding, frame filtering, etc
 - Best to check actual performance with a screen for debugging
+- Best to set all path in the code to absolute path starting with `/`, because the code will be called by other scripts (i.e., `run.py`)
+- If you have a bug in the code when modifying it, the `edge.py` and `cloud.py` may not exit correctly, which will result in the `socket` to be still in use without the resource being released. Just wait one or two minutes and then it would be good again.
