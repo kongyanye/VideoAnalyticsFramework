@@ -16,6 +16,11 @@ A minimal working example of a video analytics framework with object detection (
 - Multi-task running: easy to run a bunch of task in one script
 - Plot example: an actual example of how to plot the expected figure 
 
+## Usage:
+1. Modify `HOME_DIR` in `src/config.yaml` to the actual location, change `show_image` to False if you do not have a screen available
+2. In one terminal, `cd src/ && python edge.py`
+3. In another terminal, `cd src/ && python cloud.py`
+4. Enjoy!
 
 ## File Structure:
 - `dataset/`: used to host the dataset, or point to the actual dataset

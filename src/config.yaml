@@ -11,9 +11,9 @@ edge:
     resize: 0.5
     fps: 10
     read_start: 30
-    max_num: 150
+    max_num: 30
     batch_size: 1
-  codecs: 'png'
+  codecs: 'jpg'
   qfactor: 95 # only valid for jpg
   log_dir: null
   log_name: null
