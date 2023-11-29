@@ -30,8 +30,9 @@ class Cloud:
         self.queue_to_show = queue.Queue()
 
         # initialize detect models
-        self.model = YOLO(self.config['HOME_DIR'] +
-                          self.config['cloud']['infer_ckpt_path'])
+        self.model = YOLO(
+            os.path.join(self.config['HOME_DIR'],
+                         self.config['cloud']['infer_ckpt_path']))
         _ = self.model.predict(np.zeros((640, 640, 3)),
                                verbose=False)  # warm up
 
@@ -56,7 +57,7 @@ class Cloud:
         # load ground truth results for evaluation
         self.evaluation = Evaluation(
             src_path=self.edge_config['video_config']['src_path'],
-            gt_dir=self.config['HOME_DIR'] + self.config['cloud']['gt_dir'],
+            gt_dir=os.path.join(self.config['HOME_DIR'], self.config['cloud']['gt_dir']),
             gt_ckpt_path=self.config['cloud']['gt_dir'],
             read_start=self.edge_config['video_config']['read_start'],
             total_num=self.total_num)
