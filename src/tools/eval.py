@@ -14,11 +14,11 @@ class Evaluation:
 
     def __init__(self,
                  src_path,
+                 gt_dir,
+                 gt_ckpt_path,
                  read_start=0,
                  total_num=100,
-                 resize=[720, 1280],
-                 gt_dir='../ground_truth',
-                 gt_ckpt_path='~/files/VideoAnalyticsFramework/models/yolov8n.pt'):
+                 resize=[720, 1280]):
         """Evaluation for object detection. Detection results in format of nx1,ny1,nx2,ny2,conf,cls"""
         self.src_path = src_path
         self.read_start = read_start

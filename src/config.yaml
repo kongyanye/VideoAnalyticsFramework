@@ -1,10 +1,13 @@
 # config.yaml
 
+HOME_DIR: /home/sig/files/VideoAnalyticsFramework/
+# DO NOT OMIT the last slash for directories
+
 edge:
   host: '127.0.0.1'
   port: 6666
   video_config:
-    src_path: '../dataset/uav'
+    src_path: 'dataset/uav/'
     resize: 0.5
     fps: 10
     read_start: 30
@@ -18,7 +21,9 @@ edge:
 cloud:
   host: '127.0.0.1'
   port: 7777
-  gt_dir: '/home/sig/files/VideoAnalyticsFramework/ground_truth/'
+  gt_dir: 'ground_truth/'
+  gt_ckpt_path: 'models/yolov8n.pt'
+  infer_ckpt_path: 'models/yolov8n.pt'
   show_image: True
 
 

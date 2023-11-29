@@ -22,7 +22,7 @@ class Edge:
 
         # video loader
         self.video_gen = get_video_gen(
-            src_path=self.config['edge']['video_config']['src_path'],
+            src_path=self.config['HOME_DIR']+self.config['edge']['video_config']['src_path'],
             resize=self.config['edge']['video_config']['resize'],
             fps=self.config['edge']['video_config']['fps'],
             read_start=self.config['edge']['video_config']['read_start'],
