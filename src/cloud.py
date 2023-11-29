@@ -154,7 +154,7 @@ class Cloud:
         # show images and detection results
         if not self.show_image:
             return
-        cv2.namedWindow('cloud', cv2.WINDOW_NORMAL)
+        cv2.namedWindow('cloud', cv2.WINDOW_AUTOSIZE)
         cv2.setWindowProperty('cloud', cv2.WND_PROP_TOPMOST, 1)
 
         for data in iter(self.queue_to_show.get, None):
