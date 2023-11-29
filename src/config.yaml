@@ -1,0 +1,24 @@
+# config.yaml
+
+edge:
+  host: '127.0.0.1'
+  port: 6666
+  video_config:
+    src_path: '../dataset/uav'
+    resize: 0.5
+    fps: 10
+    read_start: 30
+    max_num: 150
+    batch_size: 1
+  codecs: 'png'
+  qfactor: 95 # only valid for jpg
+  log_dir: null
+  log_name: null
+
+cloud:
+  host: '127.0.0.1'
+  port: 7777
+  gt_dir: '/home/sig/files/VideoAnalyticsFramework/ground_truth/'
+  show_image: True
+
+

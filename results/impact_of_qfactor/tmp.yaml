@@ -1,0 +1,21 @@
+
+edge:
+  host: '127.0.0.1'
+  port: 6666
+  video_config:
+    src_path: ../../dataset/uav
+    resize: [360, 540]
+    fps: 30
+    read_start: 0
+    max_num: 100
+    batch_size: 1
+  codecs: 'jpg'
+  qfactor: 90 # only valid for jpg
+  log_dir: /home/sig/files/VideoAnalyticsFramework/results/impact_of_qfactor/uav
+  log_name: 90.csv
+
+cloud:
+  host: '127.0.0.1'
+  port: 7777
+  gt_dir: '/home/sig/files/VideoAnalyticsFramework/ground_truth/'
+  show_image: False
