@@ -23,6 +23,10 @@ class Cloud:
         logger.info(f'CONFIGURATION - {self.config}')
         self.show_image = self.config['cloud']['show_image']
 
+        # check HOME_DIR existence
+        if not os.path.exists(self.config['HOME_DIR']):
+            raise Exception(f'HOME_DIR in config.yaml {self.config["HOME_DIR"]} does not exist. Do you forget to modify it?')
+        
         # initialize variables
         self.last_idx = None
         self.queue_to_decode = queue.Queue()
@@ -150,6 +154,8 @@ class Cloud:
         # show images and detection results
         if not self.show_image:
             return
+        cv2.namedWindow('cloud', cv2.WINDOW_NORMAL)
+        cv2.setWindowProperty('cloud', cv2.WND_PROP_TOPMOST, 1)
 
         for data in iter(self.queue_to_show.get, None):
 
@@ -175,10 +181,13 @@ class Cloud:
         tasks.append(threading.Thread(target=self.receive_frames, args=()))
         tasks.append(threading.Thread(target=self.decode_frames, args=()))
         tasks.append(threading.Thread(target=self.infer_frames, args=()))
-        tasks.append(threading.Thread(target=self.show, args=()))
+        # tasks.append(threading.Thread(target=self.show, args=()))
 
         for task in tasks:
             task.start()
+
+        # macOS requires a window to be shown in the main thread
+        self.show()
 
         for task in tasks:
             task.join()

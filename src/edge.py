@@ -20,6 +20,10 @@ class Edge:
         self.config = load_config(config_path)
         logger.info(f'CONFIGURATION - {self.config}')
 
+        # check HOME_DIR existence
+        if not os.path.exists(self.config['HOME_DIR']):
+            raise Exception(f'HOME_DIR {self.config["HOME_DIR"]} in config.yaml does not exist. Do you forget to modify it?')
+        
         # video loader
         self.video_gen = get_video_gen(
             src_path=os.path.join(

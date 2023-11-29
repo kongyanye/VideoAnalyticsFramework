@@ -131,7 +131,7 @@ class VideoSource(ABC):
                     self.width = resize[1]
 
                 # resize a specific ratio
-                elif isinstance(resize, float):
+                elif resize == 1 or isinstance(resize, float):
                     assert resize > 0 and resize <= 1, (
                         'resize should be in '
                         f'(0, 1) when setting to a float, got {resize}')

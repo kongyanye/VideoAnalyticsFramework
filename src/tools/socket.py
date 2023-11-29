@@ -23,7 +23,8 @@ def connect_socket(host, port):
             logger.info(f'Connected to {host}:{port}')
             break
         except Exception as e:
-            if e.__class__.__name__ != 'ConnectionRefusedError':
+            if e.__class__.__name__ not in ['ConnectionRefusedError', 'OSError']:
+                # OSError for macOS
                 logger.error(e)
             if not notified:
                 logger.warning(f'Fail to connect to {host}:{port}, retry...')
